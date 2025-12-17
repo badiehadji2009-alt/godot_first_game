@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ck10s18r75q16"]
+
+[ext_resource type="Texture2D" uid="uid://cjgfvfnslitc4" path="res://block.png" id="1_tgw8d"]
+[ext_resource type="FontFile" uid="uid://6esp8diwujlx" path="res://bonus_mino_healthbar_UI/Emulogic-zrEw.ttf" id="2_ldg8g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgw8d"]
+texture = ExtResource("1_tgw8d")
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_560ul"]
+texture = ExtResource("1_tgw8d")
+axis_stretch_vertical = 2
+
+[resource]
+default_font = ExtResource("2_ldg8g")
+default_font_size = 19
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 17
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxTexture_tgw8d")
+Button/styles/normal = SubResource("StyleBoxTexture_560ul")

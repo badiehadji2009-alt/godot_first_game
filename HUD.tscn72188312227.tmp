@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp5f3hmxacaqi"]
+
+[ext_resource type="Script" uid="uid://5g74lkkxmlqs" path="res://HUD.gd" id="1_k5de2"]
+[ext_resource type="Texture2D" uid="uid://cpgnmbv87j1e6" path="res://iloveimg-resized (1)/Gemini_Generated_plb9syplb9sy.png" id="2_ne771"]
+[ext_resource type="Texture2D" uid="uid://b4i6c0ebxobvv" path="res://iloveimg-resized (1)/full.png" id="2_vow1y"]
+[ext_resource type="Texture2D" uid="uid://q6qif48gner1" path="res://iloveimg-resized (1)/204225-398d7ff3436380febc0a40bef71d7a09.png" id="3_ne771"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_k5de2")
+
+[node name="PlayerAvatar" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -72.0
+offset_right = 80.0
+offset_bottom = -8.0
+grow_vertical = 0
+scale = Vector2(1.4799995, 1.24)
+texture = ExtResource("2_ne771")
+
+[node name="HealthGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="HeartContainer" type="HBoxContainer" parent="HealthGroup"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -39.0
+offset_right = 338.0
+offset_bottom = 262.0
+grow_vertical = 0
+scale = Vector2(0.69389194, 0.59999573)
+
+[node name="HeartProgress_1" type="TextureProgressBar" parent="HealthGroup/HeartContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 30.0
+value = 30.0
+texture_under = ExtResource("3_ne771")
+texture_progress = ExtResource("2_vow1y")
+
+[node name="HeartProgress_2" type="TextureProgressBar" parent="HealthGroup/HeartContainer"]
+layout_mode = 2
+max_value = 30.0
+value = 30.0
+texture_under = ExtResource("3_ne771")
+texture_progress = ExtResource("2_vow1y")
+
+[node name="HeartProgress_3" type="TextureProgressBar" parent="HealthGroup/HeartContainer"]
+layout_mode = 2
+max_value = 30.0
+value = 30.0
+texture_under = ExtResource("3_ne771")
+texture_progress = ExtResource("2_vow1y")

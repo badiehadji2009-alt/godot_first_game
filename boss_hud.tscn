@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cysay2kil7lea"]
+
+[ext_resource type="Script" uid="uid://bcrimtmtcfndx" path="res://Boss_HUD.gd" id="1_xmrnk"]
+[ext_resource type="Texture2D" uid="uid://v4g4dxvep6b3" path="res://bonus_mino_healthbar_UI/mino_health_under.png" id="2_uq314"]
+[ext_resource type="Texture2D" uid="uid://digyjxxnm7dbe" path="res://bonus_mino_healthbar_UI/mino_health_over.png" id="3_mdnq5"]
+[ext_resource type="Texture2D" uid="uid://dgrlljbicba8c" path="res://bonus_mino_healthbar_UI/mino_health_progress.png" id="4_da0xa"]
+
+[node name="Boss_HUD" type="CanvasLayer"]
+process_mode = 3
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+physics_interpolation_mode = 1
+script = ExtResource("1_xmrnk")
+
+[node name="BossContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.040001, 2.0000005)
+
+[node name="BossHealthBar" type="TextureProgressBar" parent="BossContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -64.0
+offset_right = 80.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.0196078, 1)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+max_value = 640.0
+value = 640.0
+texture_under = ExtResource("2_uq314")
+texture_over = ExtResource("3_mdnq5")
+texture_progress = ExtResource("4_da0xa")
+texture_progress_offset = Vector2(8, 0)

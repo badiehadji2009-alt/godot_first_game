@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqow47bch5ocs"]
+
+[ext_resource type="PackedScene" uid="uid://faolqeed2ibm" path="res://BotStage.tscn" id="1_ig7tw"]
+
+[node name="main" type="Node2D"]
+scale = Vector2(1.0255449, 1.1937479)
+
+[node name="BotStage" parent="." instance=ExtResource("1_ig7tw")]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjstv20qak8cf"
+path="res://.godot/imported/الموجة الث.wav-369c9058014603190175a81b601485c4.sample"
+
+[deps]
+
+source_file="res://iloveimg-resized (1)/bot enemey/FlyingForestEnemies_FREE/FlyingForestEnemies_FREE/Enemy3/Enemy3-Movement-In-Animation/الموجات اصوات/الموجة الث.wav"
+dest_files=["res://.godot/imported/الموجة الث.wav-369c9058014603190175a81b601485c4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

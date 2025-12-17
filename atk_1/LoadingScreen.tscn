@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu5xm8hpyx0x"]
+
+[ext_resource type="Script" uid="uid://cnxohh65dsi0b" path="res://loading_screen.gd" id="1_5xgn1"]
+[ext_resource type="FontFile" uid="uid://6esp8diwujlx" path="res://bonus_mino_healthbar_UI/Emulogic-zrEw.ttf" id="2_dkj0d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wc614"]
+line_spacing = 6.0
+font = ExtResource("2_dkj0d")
+font_size = 37
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5xgn1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -90.0
+offset_right = 396.0
+offset_bottom = 28.0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_wc614")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3smk8qogxcbv"]
+
+[ext_resource type="AudioStream" uid="uid://cm00jcjb1585f" path="res://soundeffets/jumppp22.ogg" id="1_b6eit"]
+[ext_resource type="Script" uid="uid://bv7i4wrja82ht" path="res://PlayerSFX.gd" id="1_wdnsf"]
+[ext_resource type="AudioStream" uid="uid://jry4vr4q51jn" path="res://soundeffets/hurt.wav" id="2_wdnsf"]
+[ext_resource type="AudioStream" uid="uid://c7r53se78eit6" path="res://soundeffets/jumppp11.ogg" id="3_naoq3"]
+[ext_resource type="AudioStream" uid="uid://cddgdrujy8h7n" path="res://soundeffets/zapsplat_warfare_axe_or_other_heavy_weapon_swing_004_25154.mp3" id="4_snrfi"]
+[ext_resource type="AudioStream" uid="uid://bit5oj2pvskrn" path="res://soundeffets/zapsplat_warfare_axe_or_other_heavy_weapon_swing_003_25153.mp3" id="6_e1nx8"]
+
+[node name="PlayerSFX" type="Node"]
+script = ExtResource("1_wdnsf")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_b6eit")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wdnsf")
+volume_db = 10.0
+
+[node name="DodgeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_naoq3")
+volume_db = 10.0
+
+[node name="AttackSound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_snrfi")
+volume_db = 10.0
+
+[node name="AttackSound1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_e1nx8")
+volume_db = 10.0

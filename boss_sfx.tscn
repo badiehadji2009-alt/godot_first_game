@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1gtrv04nwjsy"]
+
+[ext_resource type="Script" uid="uid://u3otp12jqygt" path="res://BossSFX.gd" id="1_7ofys"]
+[ext_resource type="AudioStream" uid="uid://cklumfsv3syvt" path="res://soundeffets/boss/heavy-resonant-meaty-stom-su6pvvgb.wav" id="1_cdg0f"]
+[ext_resource type="AudioStream" uid="uid://fm2rti1jafmr" path="res://soundeffets/boss/slow-massive-whoosh-leadi-tjuluai4.wav" id="2_7ofys"]
+[ext_resource type="AudioStream" uid="uid://ieui8eemgt8x" path="res://soundeffets/boss/protracted-mournful-deep--mubfnzew.wav" id="3_67w4j"]
+[ext_resource type="AudioStream" uid="uid://je5ku5bw1enn" path="res://soundeffets/boss/gravelly-painful-roar-or--u56cgarv.wav" id="4_doto8"]
+
+[node name="BossSFX" type="Node"]
+script = ExtResource("1_7ofys")
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_cdg0f")
+volume_db = 24.0
+pitch_scale = 1.63
+max_distance = 459.0
+bus = &"BOSS"
+
+[node name="AxeSwingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7ofys")
+volume_db = 20.0
+bus = &"BOSS"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_67w4j")
+volume_db = 24.0
+pitch_scale = 4.0
+bus = &"BOSS"
+
+[node name="HitReceivedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_doto8")
+volume_db = 2.737
+bus = &"BOSS"

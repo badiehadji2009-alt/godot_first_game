@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhxjm512uyai1"
+path="res://.godot/imported/The-Pink-Panther-Theme-Song (mp3cut.net).ogg-77c712f021ac0a1c844b79a1d2e11b79.oggvorbisstr"
+
+[deps]
+
+source_file="res://The-Pink-Panther-Theme-Song (mp3cut.net).ogg"
+dest_files=["res://.godot/imported/The-Pink-Panther-Theme-Song (mp3cut.net).ogg-77c712f021ac0a1c844b79a1d2e11b79.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

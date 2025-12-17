@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp5f3hmxacaqi"]
+
+[ext_resource type="Script" uid="uid://5g74lkkxmlqs" path="res://HUD.gd" id="1_k5de2"]
+[ext_resource type="Texture2D" uid="uid://cpgnmbv87j1e6" path="res://iloveimg-resized (1)/Gemini_Generated_plb9syplb9sy.png" id="2_ne771"]
+[ext_resource type="PackedScene" uid="uid://drvgkns1v81b2" path="res://addons/simple_health_bar/health_bar.tscn" id="3_vow1y"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_k5de2")
+
+[node name="HealthGroup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 20.0
+offset_right = 40.0
+offset_bottom = 60.0
+
+[node name="PlayerAvatar" type="TextureRect" parent="HealthGroup"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 102.0
+grow_vertical = 0
+scale = Vector2(1.4799995, 1.24)
+texture = ExtResource("2_ne771")
+
+[node name="HealthBar" parent="HealthGroup" instance=ExtResource("3_vow1y")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 55.000004
+offset_top = -36.0
+offset_right = 155.0
+offset_bottom = -26.0
+grow_vertical = 0
+scale = Vector2(0.87029773, 2.6845913)
+max_value = 90.0
+value = 90.0
+
+[node name="DamageBar" parent="HealthGroup/HealthBar" index="0"]
+offset_top = 0.37249622
+offset_bottom = 0.3724966
+scale = Vector2(1.0004474, 1.0016118)
+
+[editable path="HealthGroup/HealthBar"]

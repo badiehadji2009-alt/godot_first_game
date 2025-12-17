@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6c1wl7u51pe5"]
+
+[ext_resource type="PackedScene" uid="uid://4raey4hvk60t" path="res://menu_background.tscn" id="1_ia0g5"]
+[ext_resource type="Script" uid="uid://bkvj4c2etq1hw" path="res://start_menu.gd" id="1_vpdu5"]
+[ext_resource type="Theme" uid="uid://ck10s18r75q16" path="res://atk_1/CustomTheme.tres" id="2_vpdu5"]
+[ext_resource type="Texture2D" uid="uid://cqo43ngvyahg8" path="res://idle/ستارت.png" id="4_v2mkm"]
+[ext_resource type="Texture2D" uid="uid://ro4xc7nqgdb8" path="res://idle/الulj9tvul.png" id="5_7boi2"]
+[ext_resource type="Texture2D" uid="uid://bmdulf10cpi3y" path="res://idle/كويت.png" id="6_pgi0o"]
+[ext_resource type="Texture2D" uid="uid://cqq6erxlfkrqi" path="res://idle/ابا.png" id="7_73a2t"]
+[ext_resource type="AudioStream" uid="uid://d0awa0xds2atn" path="res://soundeffets/boss secenc.wav" id="8_pgi0o"]
+[ext_resource type="Texture2D" uid="uid://cm6of5hblvnlr" path="res://Generated Image December 17, 2025 - 9_03PM.png" id="9_73a2t"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vpdu5")
+
+[node name="MenuBackground" parent="." instance=ExtResource("1_ia0g5")]
+layout_mode = 1
+offset_top = 0.0
+offset_bottom = 0.0
+scale = Vector2(0.9104251, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -353.0
+offset_top = -20.0
+offset_right = 614.0
+offset_bottom = 524.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.39228845, 0.43886074)
+theme = ExtResource("2_vpdu5")
+
+[node name="Button" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("4_v2mkm")
+texture_pressed = ExtResource("5_7boi2")
+texture_hover = ExtResource("4_v2mkm")
+
+[node name="Button2" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_pgi0o")
+texture_pressed = ExtResource("7_73a2t")
+texture_hover = ExtResource("6_pgi0o")
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_pgi0o")
+attenuation = 0.030185476
+max_polyphony = 5
+panning_strength = 1.67
+playback_type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(421.99994, 154)
+scale = Vector2(0.4814453, 0.5751953)
+texture = ExtResource("9_73a2t")
+
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Quit_pressed"]

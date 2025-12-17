@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hgvhcq8ht4gh"
+path="res://.godot/imported/[ قداس الحرب ] BLEACH OST.ogg-92570051ca160dece0951c71d7184ed0.oggvorbisstr"
+
+[deps]
+
+source_file="res://[ قداس الحرب ] BLEACH OST.ogg"
+dest_files=["res://.godot/imported/[ قداس الحرب ] BLEACH OST.ogg-92570051ca160dece0951c71d7184ed0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

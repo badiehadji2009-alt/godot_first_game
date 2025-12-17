@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://df7q38jbjfuob"
+path="res://.godot/imported/Imu s Theme Destruction of Lulusia Kingdom One Piece 1089 OST Cover.ogg-4b66115b05b02594863fef0a47f4650a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Imu s Theme Destruction of Lulusia Kingdom One Piece 1089 OST Cover.ogg"
+dest_files=["res://.godot/imported/Imu s Theme Destruction of Lulusia Kingdom One Piece 1089 OST Cover.ogg-4b66115b05b02594863fef0a47f4650a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

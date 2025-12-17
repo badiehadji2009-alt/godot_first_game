@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://knga4cpnttnv"
+path="res://.godot/imported/Arabic Pixel 2.ttf-d6a81dcf14fd6dbe8720a2da2393aa8e.fontdata"
+
+[deps]
+
+source_file="res://iloveimg-resized (1)/bot enemey/FlyingForestEnemies_FREE/FlyingForestEnemies_FREE/Enemy3/Enemy3-Movement-In-Animation/الموجات اصوات/Arabic Pixel 2.ttf"
+dest_files=["res://.godot/imported/Arabic Pixel 2.ttf-d6a81dcf14fd6dbe8720a2da2393aa8e.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
