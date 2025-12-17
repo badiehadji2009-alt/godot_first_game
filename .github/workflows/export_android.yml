@@ -1,28 +1,36 @@
 name: "تصدير أندرويد تلقائي"
-on: 
+
+on:
   push:
-    branches: [ main, master ] # سيعمل الكود عند رفع المشروع لفرع main
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  export_android:
+  export-android:
+    name: "بناء ملف APK"
     runs-on: ubuntu-latest
-    name: Build Android APK
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
-      - name: Godot Android Export
+    steps:
+      - name: "تحميل الكود من المستودع"
+        uses: actions/checkout@v4
+
+      - name: "إعداد بيئة Godot"
         uses: firebelley/godot-export@v5.2.1
         with:
-          godot_executable_download_url: [https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip](https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip)
-          godot_export_templates_download_url: [https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz](https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz)
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux_headless.64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_export_templates.tpz
           relative_project_path: ./
-          archive_output: true
-        env:
-          EXPORT_PRESET_NAME: Android # يجب أن يطابق الاسم في قائمة Export بمشروعك
+          archive_export_output: true
+          # 🛑 تأكد أن اسم الإعداد في Godot هو Android تماماً
+          export_preset_name: Android
+          # سيتم حفظ الملف في هذا المسار داخل GitHub
+          export_path: build/android/NewGameProject.apk
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+      - name: "رفع ملف الـ APK الناتج"
+        uses: actions/upload-artifact@v4
         with:
-          name: Game-APK
-          path: /home/runner/.local/share/godot/builds/**
+          name: Android-Build
+          path: build/android/NewGameProject.apk
