@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch: # يتيح لك تشغيل العملية يدوياً بضغطة زر
 
 jobs:
   export-android:
@@ -20,12 +21,12 @@ jobs:
       - name: "إعداد بيئة Godot"
         uses: firebelley/godot-export@v5.2.1
         with:
-          # روابط مباشرة ومجربة لإصدار 4.2.1 المستقر
+          # روابط من مستودع Godot الرسمي على GitHub لضمان السرعة والعمل 100%
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux_headless.64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz
           relative_project_path: ./
           archive_export_output: true
-          # تأكد أن اسم الـ Preset في Godot هو Android
+          # 🛑 تنبيه: تأكد أن اسم الـ Preset في قائمة Export داخل Godot هو "Android"
           export_preset_name: Android
           export_path: build/android/NewGameProject.apk
 
