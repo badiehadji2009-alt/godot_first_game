@@ -1,37 +1,48 @@
-name: "تصدير أندرويد تلقائي"
-
-on:
+name: "Android Export Final"
+on: 
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch: # يتيح لك تشغيل العملية يدوياً
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   export-android:
-    name: "بناء ملف APK"
     runs-on: ubuntu-latest
-
     steps:
       - name: "تحميل الكود من المستودع"
         uses: actions/checkout@v4
-
-      - name: "إعداد بيئة Godot"
-        uses: firebelley/godot-export@v5.2.1
         with:
-          # تم تحديث الروابط للنسخة المجرّبة والشغالة حالياً لـ 4.2.1
-          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz
-          relative_project_path: ./
-          archive_export_output: true
-          # تأكد أن اسم الـ Preset في Godot هو Android
-          export_preset_name: Android
-          export_path: build/android/NewGameProject.apk
+          lfs: true
 
-      - name: "رفع ملف الـ APK الناتج"
+      - name: "إعداد بيئة جافا (مطلوب للأندرويد)"
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: "تحميل وإعداد محرك Godot 4.3"
+        run: |
+          wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          unzip Godot_v4.3-stable_linux.x86_64.zip
+          mv Godot_v4.3-stable_linux.x86_64 godot.x86_64
+          chmod +x godot.x86_64
+
+      - name: "تحميل وتثبيت قوالب التصدير (Export Templates)"
+        run: |
+          wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+          mkdir -p ~/.local/share/godot/export_templates/4.3.stable
+          unzip Godot_v4.3-stable_export_templates.tpz
+          mv templates/* ~/.local/share/godot/export_templates/4.3.stable/
+          rm Godot_v4.3-stable_export_templates.tpz
+
+      - name: "بدء عملية التصدير (Release Build)"
+        run: |
+          mkdir -p build/android
+          # نستخدم اسم "Android" لأنه هو الاسم الموجود داخل ملف الـ presets الخاص بك
+          ./godot.x86_64 --headless --export-release "Android" build/android/minowake.apk
+
+      - name: "رفع ملف الـ APK الناتج كـ Artifact"
         uses: actions/upload-artifact@v4
         with:
           name: Android-Build
-          path: build/android/NewGameProject.apk
+          path: build/android/minowake.apk
+          if-no-files-found: error
