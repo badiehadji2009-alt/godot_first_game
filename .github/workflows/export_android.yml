@@ -1,46 +1,30 @@
-name: "تصدير أندرويد نهائي"
+name: "تصدير أندرويد"
 on: 
   push:
-    branches: [ main, master ]
-  workflow_dispatch:
+    branches: [ main ] # سيعمل الأكشن عند الدفع لفرع main
 
 jobs:
   export-android:
     runs-on: ubuntu-latest
+    name: Export Android
     steps:
-      - name: "تحميل الكود"
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Godot Android Export
+        uses: firebelley/godot-export@v5.2.1
         with:
-          lfs: true
+          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_export_templates.tpz
+          relative_project_path: ./
+          export_preset: Android
+          # إذا أردت تصدير نسخة Debug (أسهل للبداية)
+          is_debug: true 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: "إعداد جافا"
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: "تحميل Godot 4.3"
-        run: |
-          wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
-          unzip Godot_v4.3-stable_linux.x86_64.zip
-          mv Godot_v4.3-stable_linux.x86_64 godot.x86_64
-          chmod +x godot.x86_64
-
-      - name: "تحميل قوالب التصدير"
-        run: |
-          wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
-          mkdir -p ~/.local/share/godot/export_templates/4.3.stable
-          unzip Godot_v4.3-stable_export_templates.tpz
-          mv templates/* ~/.local/share/godot/export_templates/4.3.stable/
-
-      - name: "بدء التصدير للأندرويد"
-        run: |
-          mkdir -p build/android
-          # نستخدم "Android" بحرف كبير لأنه الاسم الموجود في ملف export_presets.cfg في مستودعك
-          ./godot.x86_64 --headless --verbose --export-release "Android" build/android/minowake.apk
-
-      - name: "رفع ملف APK"
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: minowake-game
-          path: build/android/minowake.apk
+          name: Android-Build
+          path: ./**/*.apk
