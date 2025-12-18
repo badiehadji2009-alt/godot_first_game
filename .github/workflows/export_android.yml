@@ -1,7 +1,7 @@
 name: "تصدير أندرويد"
 on: 
   push:
-    branches: [ main ] # سيعمل الأكشن عند الدفع لفرع main
+    branches: [ main ]
 
 jobs:
   export-android:
@@ -11,15 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # خطوة إضافية لضمان وجود مجلد الإخراج
+      - name: Create build directory
+        run: mkdir -v -p build/android
+
       - name: Godot Android Export
         uses: firebelley/godot-export@v5.2.1
         with:
-          godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_export_templates.tpz
+          # استخدام روابط GitHub الرسمية (أكثر استقراراً)
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz
           relative_project_path: ./
           export_preset: Android
-          # إذا أردت تصدير نسخة Debug (أسهل للبداية)
           is_debug: true 
+          # تحديد مسار الملف الناتج بدقة
+          relative_export_path: build/android/game.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -27,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Android-Build
-          path: ./**/*.apk
+          path: build/android/
