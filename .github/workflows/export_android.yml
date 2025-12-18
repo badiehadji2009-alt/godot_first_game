@@ -11,8 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create build directory
-        run: mkdir -v -p build/android
+      # هذه الخطوة تضمن وجود المجلد الذي يتوقعه Godot
+      - name: Prepare Build Directory
+        run: mkdir -p build/android
 
       - name: Godot Android Export
         uses: firebelley/godot-export@v5.2.1
@@ -20,10 +21,8 @@ jobs:
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz
           relative_project_path: ./
-          # هذا السطر يخبر الأكشن باستخدام المسار المكتوب داخل Godot
           use_preset_export_path: true
           export_debug: true
-          verbose: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -31,4 +30,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Android-Build
-          path: build/android/
+          # نستخدم هذا النمط للبحث عن أي ملف apk في أي مكان لضمان العثور عليه
+          path: "**/*.apk"
+          if-no-files-found: error
