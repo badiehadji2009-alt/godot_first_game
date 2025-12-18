@@ -1,4 +1,4 @@
-name: "Android Export Final"
+name: "تصدير أندرويد نهائي"
 on: 
   push:
     branches: [ main, master ]
@@ -8,41 +8,39 @@ jobs:
   export-android:
     runs-on: ubuntu-latest
     steps:
-      - name: "تحميل الكود من المستودع"
+      - name: "تحميل الكود"
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: "إعداد بيئة جافا (مطلوب للأندرويد)"
+      - name: "إعداد جافا"
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: "تحميل وإعداد محرك Godot 4.3"
+      - name: "تحميل Godot 4.3"
         run: |
           wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip Godot_v4.3-stable_linux.x86_64.zip
           mv Godot_v4.3-stable_linux.x86_64 godot.x86_64
           chmod +x godot.x86_64
 
-      - name: "تحميل وتثبيت قوالب التصدير (Export Templates)"
+      - name: "تحميل قوالب التصدير"
         run: |
           wget https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           mkdir -p ~/.local/share/godot/export_templates/4.3.stable
           unzip Godot_v4.3-stable_export_templates.tpz
           mv templates/* ~/.local/share/godot/export_templates/4.3.stable/
-          rm Godot_v4.3-stable_export_templates.tpz
 
-      - name: "بدء عملية التصدير (Release Build)"
+      - name: "بدء التصدير للأندرويد"
         run: |
           mkdir -p build/android
-          # نستخدم اسم "Android" لأنه هو الاسم الموجود داخل ملف الـ presets الخاص بك
-          ./godot.x86_64 --headless --export-release "Android" build/android/minowake.apk
+          # نستخدم "Android" بحرف كبير لأنه الاسم الموجود في ملف export_presets.cfg في مستودعك
+          ./godot.x86_64 --headless --verbose --export-release "Android" build/android/minowake.apk
 
-      - name: "رفع ملف الـ APK الناتج كـ Artifact"
+      - name: "رفع ملف APK"
         uses: actions/upload-artifact@v4
         with:
-          name: Android-Build
+          name: minowake-game
           path: build/android/minowake.apk
-          if-no-files-found: error
