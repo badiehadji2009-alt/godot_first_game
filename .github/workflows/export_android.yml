@@ -11,21 +11,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # خطوة إضافية لضمان وجود مجلد الإخراج
+      # تأكد من أننا في المجلد الصحيح ونرى ملف الإعدادات
+      - name: Check for Export Presets
+        run: ls -l export_presets.cfg
+
       - name: Create build directory
         run: mkdir -v -p build/android
 
       - name: Godot Android Export
         uses: firebelley/godot-export@v5.2.1
         with:
-          # استخدام روابط GitHub الرسمية (أكثر استقراراً)
+          # روابط سريعة ومستقرة
           godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz
+          
+          # المسارات (تأكد أن الملف في المجلد الرئيسي)
           relative_project_path: ./
-          export_preset: Android
-          is_debug: true 
-          # تحديد مسار الملف الناتج بدقة
           relative_export_path: build/android/game.apk
+          
+          # الإعدادات المتوافقة مع نسخة v5.2.1
+          export_debug: true
+          verbose: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
