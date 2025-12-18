@@ -1,4 +1,4 @@
-name: "تصدير أندرويد مبسط"
+name: "تصدير أندرويد"
 on: [push]
 
 jobs:
@@ -20,11 +20,12 @@ jobs:
       - name: Godot Export
         uses: firebelley/godot-export@v5.2.1
         with:
-          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip
-          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_export_templates.tpz
+          # روابط نسخة 4.3 المستقرة
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           relative_project_path: ./
-          # الأكشن سيصدر الملف بناءً على ما كتبته في Godot (وهو game.apk)
-          use_preset_export_path: true
+          export_preset: Android
+          relative_export_path: game.apk
           export_debug: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,6 +33,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Android-Package
-          # سيبحث عن أي ملف apk في المجلد الرئيسي
-          path: "*.apk"
+          name: Android-APK
+          path: game.apk
