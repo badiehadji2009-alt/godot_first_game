@@ -15,7 +15,7 @@ var movement_limit: Rect2 = Rect2()
 
 @export_group("Combat")
 @export var DODGE_SPEED: float = 500.0
-@export var DODGE_DURATION: float = 0.4
+@export var DODGE_DURATION: float = 0.37
 @export var INVULNERABILITY_DURATION: float = 0.5
 @export var KNOCKBACK_FORCE: float = 350.0
 @export var KNOCKBACK_Y_RATIO: float = 0.5
@@ -314,8 +314,21 @@ func _set_invulnerable(is_invulnerable: bool) -> void:
 	hurt_box.set_deferred("monitorable", not is_invulnerable)
 
 # دوال فارغة للتوصيل
-func enter_trigger_zone(body: Node2D): pass
-func exit_trigger_zone(body: Node2D): pass
-func _on_health_changed(new_health: Variant, max_health: Variant) -> void: pass
-func _on_boss_gate_area_body_entered(body: Node2D) -> void: pass
-func _on_boss_gate_area_body_exited(body: Node2D) -> void: pass
+# اذهب لآخر ملف اللاعب واستبدل الدوال الفارغة بهذا:
+
+func enter_trigger_zone(_body: Node2D):
+	print("Player entered trigger zone")
+
+func exit_trigger_zone(_body: Node2D):
+	print("Player exited trigger zone")
+
+func _on_boss_gate_area_body_entered(body: Node2D) -> void:
+	if body == self:
+		print("Player is at the boss gate!")
+		# هنا يمكنك إضافة متغير ليسمح بالهجوم للانتقال
+		# is_at_gate = true
+
+func _on_boss_gate_area_body_exited(body: Node2D) -> void:
+	if body == self:
+		print("Player left the boss gate")
+		# is_at_gate = false

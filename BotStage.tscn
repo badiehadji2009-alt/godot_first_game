@@ -2925,6 +2925,21 @@ size = Vector2(20, 394)
 radius = 117.03223
 height = 361.05212
 
+[sub_resource type="Animation" id="Animation_0gosp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../FadeCanvasLayer/FadeScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4nfqt"]
 resource_name = "fade_to_black"
 step = 1.0
@@ -2939,21 +2954,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_0gosp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../FadeCanvasLayer/FadeScreen:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3x5ip"]
@@ -3051,6 +3051,7 @@ zoom = Vector2(1.8, 1.8)
 limit_left = 12
 limit_top = -250
 limit_right = 4539
+limit_bottom = 115
 
 [node name="PlayerHurtBox" parent="Player" index="4"]
 position = Vector2(-7, 0.5)

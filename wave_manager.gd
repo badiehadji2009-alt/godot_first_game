@@ -38,7 +38,7 @@ var WAVES = [
 
 # 🛑 مشغلان منفصلان
 @onready var wave_audio_player = $WaveAudioPlayer # لـ SFX الإعلان الفردي
-@onready var ost_player = $OstPlayer           # للأغنية الخلفية المستمرة
+@onready var ost_player = $OstPlayer      # للأغنية الخلفية المستمرة
 
 # 🆕 مرجع بوابة البوس (مطلوب لفتح الباب)
 @onready var boss_gate = $"../BossGateArea"
@@ -183,7 +183,7 @@ func display_wave_announcement(wave_index: int):
 		
 		if wave_audio_player and target_sound:
 			wave_audio_player.stream = target_sound # تعيين الملف الصوتي
-			wave_audio_player.play()        
+			wave_audio_player.play()           # تشغيل الصوت
 	
 	# 3. إخفاء الواجهة بعد مدة زمنية
 	var hide_timer = Timer.new()

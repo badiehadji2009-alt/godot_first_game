@@ -32,7 +32,7 @@ const KNOCKBACK_Y_RATIO := 0.5
 @onready var detection_area: Area2D = $DetectionArea
 @onready var hitbox: Area2D = $HitBox
 @onready var hurt_box: Area2D = $HurtBox
-@onready var sfx_player: Node = $SlimeSFX
+# تم حذف سطر sfx_player لضمان عمل الأندرويد
 
 # ----------------------------------------------------
 # Variables
@@ -59,7 +59,7 @@ func _ready():
 		current_health = SMALL_SLIME_HEALTH
 		scale = Vector2(SMALL_SLIME_SCALE, SMALL_SLIME_SCALE)
 
-		# ❗ السلايم الصغير لا يصطدم فيزيائيًا
+		# السلايم الصغير لا يصطدم فيزيائيًا
 		set_collision_layer_value(1, false)
 		set_collision_mask_value(2, false)
 		set_collision_mask_value(3, false)
@@ -143,9 +143,9 @@ func change_state(new_state: State):
 				if jump_direction == 0:
 					jump_direction = 1.0
 
-			anim.flip_h = jump_direction > 0
-			velocity.y = JUMP_VELOCITY
-			velocity.x = jump_direction * MOVE_SPEED
+				anim.flip_h = jump_direction > 0
+				velocity.y = JUMP_VELOCITY
+				velocity.x = jump_direction * MOVE_SPEED
 
 		State.LAND:
 			anim.play("Slime_Land")
@@ -155,22 +155,19 @@ func change_state(new_state: State):
 			anim.play("Slime_Hurt")
 
 		State.DIE:
-			# 🛑 تعطيل كل التفاعل القتالي
 			_disable_combat()
 			anim.play("Slime_Death")
 			velocity = Vector2.ZERO
 
 		State.DEAD:
 			if size_stage == 1:
-				# السلايم الكبير ينقسم ثم يطلق إشارة died داخل _split()
 				_split()
 			else:
-				# 🛑 التعديل المطلوب: السلايم الصغير يطلق إشارة died قبل أن يُحذف
 				died.emit()
 				queue_free()
 
 # ----------------------------------------------------
-# Disable Combat (NEW)
+# Disable Combat
 # ----------------------------------------------------
 func _disable_combat():
 	if hitbox:
@@ -200,7 +197,6 @@ func _split():
 		get_parent().call_deferred("add_child", s)
 		s.call_deferred("_apply_split_force", i)
 
-	# 🛑 السلايم الكبير يطلق إشارة died هنا (لأنه مات وانقسم)
 	died.emit() 
 	queue_free()
 
