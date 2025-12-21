@@ -2,7 +2,7 @@ extends Node
 
 # --- إعدادات ثابتة وموارد ---
 const MUSHROOM_SCENE = preload("res://fungal_tank.tscn")
-const SLIME_SCENE = preload("res://Slime.tscn")
+const SLIME_SCENE = preload("res://slime.tscn")
 
 const SPAWN_INTERVAL = 1.5
 const WAVE_BREAK_TIME = 5.0

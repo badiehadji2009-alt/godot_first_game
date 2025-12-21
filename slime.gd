@@ -9,7 +9,7 @@ signal health_changed(current_health, max_health)
 # ----------------------------------------------------
 # Configuration
 # ----------------------------------------------------
-const SLIME_SCENE_PATH := "res://Slime.tscn"
+const SLIME_SCENE_PATH := "res://slime.tscn"
 
 const BIG_SLIME_HEALTH := 45.0
 const SMALL_SLIME_HEALTH := 1.0
